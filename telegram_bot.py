@@ -1,7 +1,7 @@
 import logging
 import os
 
-from dialogflow import detect_intent_texts
+from dialogflow_utils import detect_intent_texts
 
 from telegram import Update
 from telegram.ext import Updater, CommandHandler
