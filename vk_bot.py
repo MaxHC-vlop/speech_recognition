@@ -11,7 +11,7 @@ from environs import Env
 
 def send_dialogflow_message(event, vk_api):
     dialogflow_response, is_fallback = detect_intent_texts(
-        os.getenv('DIALOD_ID'),
+        os.getenv('PROJECT_ID'),
         event.user_id,
         [event.text], 'ru')
 

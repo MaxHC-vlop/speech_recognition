@@ -28,7 +28,7 @@ def start(update: Update, context: CallbackContext) -> None:
 def send_dialogflow_message(update: Update, context: CallbackContext) -> None:
     session_id = update.message.from_user.id
     dialogflow_response, is_fallback = detect_intent_texts(
-        os.getenv('DIALOD_ID'),
+        os.getenv('PROJECT_ID'),
         session_id,
         [update.message.text], 'ru')
 
@@ -50,7 +50,6 @@ def main() -> None:
     )
 
     updater.start_polling()
-
     updater.idle()
 
 
