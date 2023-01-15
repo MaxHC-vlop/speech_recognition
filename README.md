@@ -52,8 +52,8 @@ touch .env
 ```
 
 - Create two bots with [BotFather](https://t.me/BotFather) and get their tokens:
-  1. ChatBot
-  2. LoggerBot
+  - ChatBot
+  - LoggerBot
 
 - Create api key for VK group(help [here](https://vk.com/@pinttiskad-kak-uznat-token-gruppy)).
 
