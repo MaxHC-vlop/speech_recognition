@@ -1,12 +1,18 @@
 import random
 import os
+import logging
 
+from logs_handler import TelegramLogsHandler
 from dialogflow_utils import detect_intent_texts
 
 import vk_api as vk
+import telegram
 
 from vk_api.longpoll import VkLongPoll, VkEventType
 from environs import Env
+
+
+logger = logging.getLogger(__file__)
 
 
 def send_dialogflow_message(event, vk_api):
@@ -26,7 +32,14 @@ def send_dialogflow_message(event, vk_api):
 def main():
     env = Env()
     env.read_env()
-    vk_token = env.str('VK_TOKEN')
+
+    vk_token = env.str('VK_BOT_TOKEN')
+    logger_bot_token = env.str('LOGGER_BOT_TOKEN')
+    chat_id = env.str('ADMIN_CHAT_ID')
+
+    logs = telegram.Bot(logger_bot_token)
+    logger.addHandler(TelegramLogsHandler(logs, chat_id))
+    logger.info('Start vk bot.')
 
     vk_session = vk.VkApi(token=vk_token)
     vk_api = vk_session.get_api()

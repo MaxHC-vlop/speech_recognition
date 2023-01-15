@@ -67,7 +67,7 @@ ADMIN_CHAT_ID='your_telegram_chat_id'
 
 PROJECT_ID='your Project ID'
 
-VK_TOKEN='vk_group_token'
+VK_BOT_TOKEN='vk_group_token'
 
 GOOGLE_APPLICATION_CREDENTIALS='path/your/json/file'
 ```
