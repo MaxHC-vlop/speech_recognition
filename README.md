@@ -90,7 +90,7 @@ python telegram_bot.py
 python vk_bot.py
 ```
 
-- You will see in the chat with the [bot](https://vk.com/club21721363):
+- You will see in the chat with the [bot](https://vk.com/club217213631):
 
 ![vk_gif](./screenshots/vk.gif)
 
