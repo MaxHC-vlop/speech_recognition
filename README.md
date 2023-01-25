@@ -79,7 +79,7 @@ GOOGLE_APPLICATION_CREDENTIALS='path/your/json/file'
 python telegram_bot.py
 ```
 
-- You will see in the chat with the bot:
+- You will see in the chat with the [bot](https://t.me/baladoshka_bot):
 
 ![telegram_gif](./screenshots/telegram.gif)
 
@@ -90,8 +90,7 @@ python telegram_bot.py
 python vk_bot.py
 ```
 
-- You will see in the chat with the bot:
-
+- You will see in the chat with the [bot](https://vk.com/club21721363):
 
 ![vk_gif](./screenshots/vk.gif)
 
@@ -126,31 +125,4 @@ Loads new phrases to communicate with the bot from your json file.
 - Example:
 ```bash
 python intents_loader.py -f your_file.json
-```
-
-## Deploy with Docker
-
-- Docker must be installed on the system. Help [here](https://docs.docker.com/engine/install/).
-
-- Go to project :
-```bash
-cd speech_recognition/
-```
-- Collect the image:
-```
-sudo docker build -t bot .
-```
-
-- Run container:
-```
-sudo docker run --restart=always -d bot
-```
-
-- Check if container exists:
-```bash
-sudo docker ps
-# You will see
-
-CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS     NAMES
-1234567890     bot       "/bin/sh -c 'python3…"   11 minutes ago   Up 10 minutes             name
 ```
