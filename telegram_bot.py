@@ -1,5 +1,4 @@
 import logging
-import os
 
 from logs_handler import TelegramLogsHandler
 from dialogflow_utils import detect_intent_texts
@@ -26,7 +25,7 @@ def start(update: Update, context: CallbackContext) -> None:
 def send_dialogflow_message(update: Update, context: CallbackContext) -> None:
     session_id = update.message.from_user.id
     dialogflow_response, is_fallback = detect_intent_texts(
-        os.getenv('PROJECT_ID'),
+        context.bot_data['project_id'],
         session_id,
         [update.message.text], 'ru')
 
@@ -45,6 +44,7 @@ def main() -> None:
     telegram_bot_token = env.str('TELEGRAM_BOT_TOKEN')
     logger_bot_token = env.str('LOGGER_BOT_TOKEN')
     chat_id = env.str('ADMIN_CHAT_ID')
+    project_id = env.str('PROJECT_ID')
 
     logs = telegram.Bot(logger_bot_token)
     logger.addHandler(TelegramLogsHandler(logs, chat_id))
@@ -53,6 +53,7 @@ def main() -> None:
     updater = Updater(telegram_bot_token)
 
     dispatcher = updater.dispatcher
+    dispatcher.bot_data = {'project_id': project_id}
 
     dispatcher.add_handler(CommandHandler("start", start))
     dispatcher.add_handler(

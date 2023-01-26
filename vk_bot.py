@@ -1,5 +1,4 @@
 import random
-import os
 import logging
 
 from logs_handler import TelegramLogsHandler
@@ -15,9 +14,9 @@ from environs import Env
 logger = logging.getLogger(__file__)
 
 
-def send_dialogflow_message(event, vk_api):
+def send_dialogflow_message(event, vk_api, project_id):
     dialogflow_response, is_fallback = detect_intent_texts(
-        os.getenv('PROJECT_ID'),
+        project_id,
         event.user_id,
         [event.text], 'ru')
 
@@ -41,6 +40,7 @@ def main():
     vk_token = env.str('VK_BOT_TOKEN')
     logger_bot_token = env.str('LOGGER_BOT_TOKEN')
     chat_id = env.str('ADMIN_CHAT_ID')
+    project_id = env.str('PROJECT_ID')
 
     logs = telegram.Bot(logger_bot_token)
     logger.addHandler(TelegramLogsHandler(logs, chat_id))
@@ -51,7 +51,7 @@ def main():
     longpoll = VkLongPoll(vk_session)
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW and event.to_me:
-            send_dialogflow_message(event, vk_api)
+            send_dialogflow_message(event, vk_api, project_id)
 
 
 if __name__ == "__main__":
