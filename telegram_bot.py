@@ -34,6 +34,11 @@ def send_dialogflow_message(update: Update, context: CallbackContext) -> None:
 
 
 def main() -> None:
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s %(process)d %(levelname)s %(message)s"
+    )
+
     env = Env()
     env.read_env()
 

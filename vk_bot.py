@@ -30,6 +30,11 @@ def send_dialogflow_message(event, vk_api):
 
 
 def main():
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s %(process)d %(levelname)s %(message)s"
+    )
+
     env = Env()
     env.read_env()
 

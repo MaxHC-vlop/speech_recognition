@@ -1,12 +1,6 @@
 import logging
 
 
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s %(process)d %(levelname)s %(message)s"
-)
-
-
 class TelegramLogsHandler(logging.Handler):
     def __init__(self, tg_bot, chat_id):
         super().__init__()
